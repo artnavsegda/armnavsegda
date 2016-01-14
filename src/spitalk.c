@@ -4,9 +4,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <bcm2835.h>
-#include <tm1638.h>
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -14,24 +11,9 @@
 
 main()
 {
-	tm1638_p t;
 	int fd;
 	char buf[4];
 	int num2;
-
-	if (!bcm2835_init())
-	{
-		printf("Unable to initialize BCM library\n");
-		return -1;
-	}
-
-	t = tm1638_alloc(17, 21, 22);
-	if (!t)
-	{
-		printf("Unable to allocate TM1638\n");
-		return -2;
-	}
-	tm1638_set_7seg_text(t, "start", 0x00);
 
 	fd = open("/dev/spidev0.0",O_RDWR);
 	if (fd<=1)
