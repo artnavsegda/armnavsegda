@@ -23,18 +23,16 @@ main()
 	}
 	while (1)
 	{
-		buf[0] = 0x08;
-		write(fd,buf,1);
+		write(fd,"\x08",1);
 		read(fd,buf,1);
 		//printf("read %x\n",buf[0]);
 		if (buf[0] == 8)
 		{
-			buf[0] = 0x38;
 			num2 = 0;
-			write(fd,buf,1);
+			write(fd,"\x38",1);
 			read(fd,buf,2);
 			swab(&buf,&num2,2);
-			printf("read %d\n",num2-0x8000);
+			printf("%d\n",num2-0x8000);
 		}
 	}
 	return 0;
