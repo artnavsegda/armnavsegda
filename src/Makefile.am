@@ -1,1 +1,1 @@
-bin_PROGRAMS = spitalk
+bin_PROGRAMS = spitalk i2ctalk
