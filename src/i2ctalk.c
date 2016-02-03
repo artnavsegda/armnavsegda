@@ -3,8 +3,9 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
+#include <string.h>
 
-int main()
+int main(int argc, char *argv[])
 {
 	int fd;
 	fd = open("/dev/i2c-1",O_RDWR);
@@ -20,7 +21,8 @@ int main()
 		exit(1);
 	}
 	//write(fd,"\x00\x01\x02",3);
-	write(fd,"hello",6);
+	//write(fd,"ohala",6);
+	write(fd,argv[1],strlen(argv[1]));
 	close(fd);
 	return 0;
 }
