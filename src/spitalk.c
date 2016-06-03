@@ -33,6 +33,7 @@ main()
 	{
 		write(fd,"\x08",1);
 		read(fd,buf,1);
+		printf("%d\n",buf[0]);
 		if (buf[0] == 8)
 		{
 			num2 = 0;
