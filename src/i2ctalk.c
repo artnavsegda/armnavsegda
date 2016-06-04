@@ -26,12 +26,18 @@ int main(int argc, char *argv[])
 	//i2c_smbus_write_byte(fd,0x66);
 	//printf("%d\n",i2c_smbus_read_byte(fd));
 	//i2c_smbus_write_byte_data(fd,0x66,0x77);
-	printf("%d\n",i2c_smbus_read_byte_data(fd,0x00));
-	printf("%d\n",i2c_smbus_read_byte_data(fd,0x01));
-	printf("%d\n",i2c_smbus_read_byte_data(fd,0x02));
-	printf("%d\n",i2c_smbus_read_byte_data(fd,0x03));
-	printf("%d\n",i2c_smbus_read_byte_data(fd,0x04));
-	printf("%d\n",i2c_smbus_read_byte_data(fd,0x05));
+	while(1)
+	{
+		printf("%d %d %d %d %d %d\n",
+				i2c_smbus_read_byte_data(fd,0x00),
+				i2c_smbus_read_byte_data(fd,0x01),
+				i2c_smbus_read_byte_data(fd,0x02),
+				i2c_smbus_read_byte_data(fd,0x03),
+				i2c_smbus_read_byte_data(fd,0x04),
+				i2c_smbus_read_byte_data(fd,0x05)
+				);
+		sleep(1);
+	}
 	close(fd);
 	return 0;
 }
