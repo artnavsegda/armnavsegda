@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	//i2c_smbus_write_byte_data(fd,0x66,0x77);
 	while(1)
 	{
-		printf("%d %d %d %d %d %d %d %d\n",
+		printf("%d %d %d %d %d %d %d %d %d %d\n",
 				i2c_smbus_read_word_data(fd,0x00),
 				i2c_smbus_read_word_data(fd,0x01),
 				i2c_smbus_read_word_data(fd,0x02),
@@ -36,7 +36,9 @@ int main(int argc, char *argv[])
 				i2c_smbus_read_word_data(fd,0x04),
 				i2c_smbus_read_word_data(fd,0x05),
 				i2c_smbus_read_word_data(fd,0x06),
-				i2c_smbus_read_word_data(fd,0x07)
+				i2c_smbus_read_word_data(fd,0x07),
+				i2c_smbus_read_word_data(fd,0x08)-0x17cc,
+				i2c_smbus_read_word_data(fd,0x09)-0x17cc
 				);
 		sleep(1);
 	}
