@@ -29,14 +29,14 @@ int main(int argc, char *argv[])
 	while(1)
 	{
 		printf("%d %d %d %d %d %d %d %d\n",
-				i2c_smbus_read_byte_data(fd,0x00),
-				i2c_smbus_read_byte_data(fd,0x01),
-				i2c_smbus_read_byte_data(fd,0x02),
-				i2c_smbus_read_byte_data(fd,0x03),
-				i2c_smbus_read_byte_data(fd,0x04),
-				i2c_smbus_read_byte_data(fd,0x05),
-				i2c_smbus_read_byte_data(fd,0x06),
-				i2c_smbus_read_byte_data(fd,0x07)
+				i2c_smbus_read_word_data(fd,0x00),
+				i2c_smbus_read_word_data(fd,0x01),
+				i2c_smbus_read_word_data(fd,0x02),
+				i2c_smbus_read_word_data(fd,0x03),
+				i2c_smbus_read_word_data(fd,0x04),
+				i2c_smbus_read_word_data(fd,0x05),
+				i2c_smbus_read_word_data(fd,0x06),
+				i2c_smbus_read_word_data(fd,0x07)
 				);
 		sleep(1);
 	}
