@@ -5,6 +5,15 @@
 #include <linux/i2c-dev.h>
 #include <string.h>
 
+#define PCA9557_IO0 0x1
+#define PCA9557_IO1 0x2
+#define PCA9557_IO2 0x4
+#define PCA9557_IO3 0x8
+#define PCA9557_IO4 0x10
+#define PCA9557_IO5 0x20
+#define PCA9557_IO6 0x40
+#define PCA9557_IO7 0x80
+
 #define PCA9557_OUTPUT_REGISTER 0x01
 #define PCA9557_POLARITY_REGISTER 0x02
 #define PCA9557_DIRECTION_REGISTER 0x03
