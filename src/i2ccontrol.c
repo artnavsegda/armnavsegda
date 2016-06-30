@@ -4,6 +4,7 @@
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define _BV(bit) (1 << (bit))
 
@@ -97,7 +98,7 @@ int main(int argc, char *argv[])
 	pca9557_set_pin_dir(fd, 0x18, SERVO_2_LEFT_OUT, PCA9557_DIR_OUTPUT);
 	pca9557_set_pin_dir(fd, 0x18, SERVO_2_RIGHT_OUT, PCA9557_DIR_OUTPUT);
 	pca9557_set_pin_dir(fd, 0x18, SERVO_2_LEFT_IN, PCA9557_DIR_INPUT);
-	pca9557_init(0x19);
+	pca9557_init(fd, 0x19);
 	pca9557_set_pin_dir(fd, 0x19, SERVO_2_RIGHT_IN, PCA9557_DIR_INPUT);
 	pca9557_set_pin_dir(fd, 0x19, SERVO_3_LEFT_OUT, PCA9557_DIR_OUTPUT);
 	pca9557_set_pin_dir(fd, 0x19, SERVO_3_RIGHT_OUT, PCA9557_DIR_OUTPUT);
@@ -105,7 +106,7 @@ int main(int argc, char *argv[])
 	pca9557_set_pin_dir(fd, 0x19, SERVO_3_RIGHT_IN, PCA9557_DIR_INPUT);
 	pca9557_set_pin_dir(fd, 0x19, SERVO_4_LEFT_OUT, PCA9557_DIR_OUTPUT);
 	pca9557_set_pin_dir(fd, 0x19, SERVO_4_RIGHT_OUT, PCA9557_DIR_OUTPUT);
-	pca9557_init(0x1a);
+	pca9557_init(fd, 0x1a);
 	pca9557_set_pin_dir(fd, 0x1a, SERVO_4_LEFT_IN, PCA9557_DIR_INPUT);
 	pca9557_set_pin_dir(fd, 0x1a, SERVO_4_RIGHT_IN, PCA9557_DIR_INPUT);
 	pca9557_set_pin_dir(fd, 0x1a, U3_IGNIT, PCA9557_DIR_OUTPUT);
