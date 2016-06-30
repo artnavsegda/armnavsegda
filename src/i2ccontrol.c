@@ -86,7 +86,28 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	pca9557_init(fd, 0);
+//	pca9557_init(fd, 0x18);
+	pca9557_init(fd, 0x18);
+	pca9557_set_pin_dir(fd, 0x18, SERVO_1_LEFT_OUT, PCA9557_DIR_OUTPUT);
+	pca9557_set_pin_dir(fd, 0x18, SERVO_1_RIGHT_OUT, PCA9557_DIR_OUTPUT);
+	pca9557_set_pin_dir(fd, 0x18, SERVO_1_LEFT_IN, PCA9557_DIR_INPUT);
+	pca9557_set_pin_dir(fd, 0x18, SERVO_1_RIGHT_IN, PCA9557_DIR_INPUT);
+	pca9557_set_pin_dir(fd, 0x18, SERVO_2_LEFT_OUT, PCA9557_DIR_OUTPUT);
+	pca9557_set_pin_dir(fd, 0x18, SERVO_2_RIGHT_OUT, PCA9557_DIR_OUTPUT);
+	pca9557_set_pin_dir(fd, 0x18, SERVO_2_LEFT_IN, PCA9557_DIR_INPUT);
+	pca9557_init(0x19);
+	pca9557_set_pin_dir(fd, 0x19, SERVO_2_RIGHT_IN, PCA9557_DIR_INPUT);
+	pca9557_set_pin_dir(fd, 0x19, SERVO_3_LEFT_OUT, PCA9557_DIR_OUTPUT);
+	pca9557_set_pin_dir(fd, 0x19, SERVO_3_RIGHT_OUT, PCA9557_DIR_OUTPUT);
+	pca9557_set_pin_dir(fd, 0x19, SERVO_3_LEFT_IN, PCA9557_DIR_INPUT);
+	pca9557_set_pin_dir(fd, 0x19, SERVO_3_RIGHT_IN, PCA9557_DIR_INPUT);
+	pca9557_set_pin_dir(fd, 0x19, SERVO_4_LEFT_OUT, PCA9557_DIR_OUTPUT);
+	pca9557_set_pin_dir(fd, 0x19, SERVO_4_RIGHT_OUT, PCA9557_DIR_OUTPUT);
+	pca9557_init(0x1a);
+	pca9557_set_pin_dir(fd, 0x1a, SERVO_4_LEFT_IN, PCA9557_DIR_INPUT);
+	pca9557_set_pin_dir(fd, 0x1a, SERVO_4_RIGHT_IN, PCA9557_DIR_INPUT);
+	pca9557_set_pin_dir(fd, 0x1a, U3_IGNIT, PCA9557_DIR_OUTPUT);
+	pca9557_set_pin_level(fd, 0x1a, U3_IGNIT, true);
 	//write(fd,"\x00\x01\x02",3);
 	//write(fd,"ohala",6);
 	//write(fd,argv[1],strlen(argv[1]));
