@@ -5,7 +5,7 @@
 #include <linux/i2c-dev.h>
 #include <string.h>
 
-#define _BV(bit) (1 << (bit)) 
+#define _BV(bit) (1 << (bit))
 
 #define PCA9557_IO0 0x01
 #define PCA9557_IO1 0x02
@@ -26,14 +26,19 @@
 #define PCA9557_PIN_LEVEL_LOW 0x00
 #define PCA9557_PIN_LEVEL_HIGH 0x01
 
+enum pca9557_direction {
+	PCA9557_DIR_INPUT,
+	PCA9557_DIR_OUTPUT,
+};
+
 void pca9557_init(int fd, char addr)
 {
 	ioctl(fd,I2C_SLAVE,addr);
 	// polarity all bits retained
-	i2c_smbus_write_byte_data(fd, PCA9557_POLARITY_REGISTER, 0x00);
+	i2c_smbus_write_byte_data(fd, 0x02, 0x00);
 }
 
-void pca9557_set_pin_dir(int fd, char addr, char port, char direction)
+void pca9557_set_pin_dir(int fd, char addr, char port, enum pca9557_direction direction)
 {
 	char state;
 	ioctl(fd,I2C_SLAVE,addr);
@@ -48,21 +53,21 @@ void pca9557_set_pin_dir(int fd, char addr, char port, char direction)
 void pca9557_set_pin_level(int fd, char addr, char port, bool level)
 {
 	char state;
-	ioctl(fd,I2C_SLAVE,PCA9557_BASE_ADDRESS+addr);
-	state = i2c_smbus_read_byte_data(fd,PCA9557_OUTPUT_REGISTER);
+	ioctl(fd,I2C_SLAVE,addr);
+	state = i2c_smbus_read_byte_data(fd,0x01);
 	if (level)
 		state |= _BV(port);
 	else
 		state &= ~_BV(port);
-	i2c_smbus_write_byte_data(fd, PCA9557_OUTPUT_REGISTER, state);
+	i2c_smbus_write_byte_data(fd, 0x01, state);
 };
 
 char pca9557_get_pin_level(int fd, char addr, char port)
 {
 	char state;
-	ioctl(fd,I2C_SLAVE,PCA9557_BASE_ADDRESS+addr);
-	state = i2c_smbus_read_byte_data(fd,PCA9557_INPUT_REGISTER);
-	return state | ~port;
+	ioctl(fd,I2C_SLAVE,addr);
+	state = i2c_smbus_read_byte_data(fd,0x00);
+	return state & _BV(port);
 }
 
 int main(int argc, char *argv[])
