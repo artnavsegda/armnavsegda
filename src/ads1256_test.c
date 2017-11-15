@@ -46,7 +46,7 @@ RPI_V2_GPIO_P1_13->RPI_GPIO_P1_13
 
 #define  DRDY  RPI_GPIO_P1_11         //P0
 #define  RST  RPI_GPIO_P1_12     //P1
-#define	SPICS	RPI_GPIO_P1_15	//P3
+#define	SPICS	RPI_GPIO_P1_24	//P3
 
 #define CS_1() bcm2835_gpio_write(SPICS,HIGH)
 #define CS_0()  bcm2835_gpio_write(SPICS,LOW)
